@@ -8802,6 +8802,68 @@ function cobrarCliente(empresa) {
 
     localStorage.setItem('crm_ultimo_mes', agora.getMonth()+'-'+agora.getFullYear());
 })();
-</script>
+// === FUNÇÃO SALVAR METAS ===
+function salvarMetas() {
+    var inputs = document.querySelectorAll('input, select');
+    var dados = {};
+    inputs.forEach(function(el) {
+        if (el.id) {
+            dados[el.id] = el.value;
+        }
+    });
+    
+    var mesSelect = document.querySelector('select');
+    var mesSelecionado = mesSelect ? mesSelect.value : 'geral';
+    
+    localStorage.setItem('metas_' + mesSelecionado, JSON.stringify(dados));
+    localStorage.setItem('metas_atual', JSON.stringify(dados));
+    
+    alert('✅ Metas salvas com sucesso!');
+    
+    // Atualiza dashboard se existir
+    if (typeof atualizarDashboard === 'function') {
+        atualizarDashboard();
+    }
+}
+
+// === FUNÇÃO VER HISTÓRICO ===
+function verHistorico() {
+    var keys = [];
+    for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k.startsWith('metas_') && k !== 'metas_atual') {
+            keys.push(k.replace('metas_', ''));
+        }
+    }
+    if (keys.length === 0) {
+        alert('Nenhum histórico encontrado.');
+    } else {
+        alert('📊 Meses salvos:\n' + keys.join('\n'));
+    }
+}
+
+// === CARREGAR METAS SALVAS ===
+function carregarMetas() {
+    var mesSelect = document.querySelector('select');
+    var mesSelecionado = mesSelect ? mesSelect.value : 'geral';
+    var dados = localStorage.getItem('metas_' + mesSelecionado);
+    
+    if (!dados) dados = localStorage.getItem('metas_atual');
+    if (dados) {
+        dados = JSON.parse(dados);
+        Object.keys(dados).forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.value = dados[id];
+        });
+    }
+}
+
+// Carrega ao abrir
+document.addEventListener('DOMContentLoaded', carregarMetas);
+
+// Carrega ao trocar mês
+document.querySelectorAll('select').forEach(function(sel) {
+    sel.addEventListener('change', carregarMetas);
+});</script>
 </body>
 </html>
