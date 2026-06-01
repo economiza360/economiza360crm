@@ -8750,22 +8750,48 @@ function cobrarCliente(empresa) {
 }
     </script>
 <script>
-// Auto-fix: Atualiza TODOS os textos "Maio 2026" para o mês atual
+// === SISTEMA AUTOMÁTICO DE MÊS E RESET ===
 (function(){
     var meses=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-    var mesAtual=meses[new Date().getMonth()]+' '+new Date().getFullYear();
+    var agora=new Date();
+    var mesAtual=agora.getMonth();
+    var anoAtual=agora.getFullYear();
+    var chave=mesAtual+'-'+anoAtual;
+    var mesNome=meses[mesAtual]+' '+anoAtual;
+    
     document.querySelectorAll('*').forEach(function(el){
-        if(el.children.length===0 && el.textContent.includes('Maio 2026')){
-            el.textContent=el.textContent.replace(/Maio 2026/g, mesAtual);
+        if(el.children.length===0){
+            meses.forEach(function(m){
+                for(var a=2024;a<=2050;a++){
+                    if(el.textContent.includes(m+' '+a)){
+                        el.textContent=el.textContent.replace(m+' '+a, mesNome);
+                    }
+                }
+            });
         }
     });
-    // Atualiza o SPAN do header
-    var spans=document.querySelectorAll('span');
-    spans.forEach(function(s){
-        if(s.innerHTML.includes('Maio 2026')){
-            s.innerHTML=s.innerHTML.replace(/Maio 2026/g, mesAtual);
-        }
-    });
+    
+    var ultimoMes=localStorage.getItem('crm_ultimo_mes');
+    if(ultimoMes && ultimoMes!==chave){
+        document.querySelectorAll('h2, h3, .card-value, .stat-value, .metric-value').forEach(function(el){
+            var t=el.textContent.trim();
+            if(/^\d+$/.test(t) && parseInt(t)>0) el.textContent='0';
+            if(/^R\$/.test(t)) el.textContent='R$ 0';
+        });
+        document.querySelectorAll('span, small, .badge').forEach(function(el){
+            var t=el.textContent.trim();
+            if(/^[+-]\d+%$/.test(t)) el.textContent='0%';
+        });
+        document.querySelectorAll('.progress-bar').forEach(function(el){
+            if(el.style) el.style.width='0%';
+        });
+        document.querySelectorAll('tbody tr').forEach(function(tr){
+            tr.style.display='none';
+        });
+    }
+    localStorage.setItem('crm_ultimo_mes', chave);
 })();
-</script></body>
+</script>
+</body>
+</html>
 </html>
