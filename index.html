@@ -8749,5 +8749,23 @@ function cobrarCliente(empresa) {
     document.body.appendChild(modal);
 }
     </script>
-</body>
+<script>
+// Auto-fix: Atualiza TODOS os textos "Maio 2026" para o mês atual
+(function(){
+    var meses=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+    var mesAtual=meses[new Date().getMonth()]+' '+new Date().getFullYear();
+    document.querySelectorAll('*').forEach(function(el){
+        if(el.children.length===0 && el.textContent.includes('Maio 2026')){
+            el.textContent=el.textContent.replace(/Maio 2026/g, mesAtual);
+        }
+    });
+    // Atualiza o SPAN do header
+    var spans=document.querySelectorAll('span');
+    spans.forEach(function(s){
+        if(s.innerHTML.includes('Maio 2026')){
+            s.innerHTML=s.innerHTML.replace(/Maio 2026/g, mesAtual);
+        }
+    });
+})();
+</script></body>
 </html>
