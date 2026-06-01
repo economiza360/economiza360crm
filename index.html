@@ -8802,8 +8802,29 @@ function cobrarCliente(empresa) {
 
     localStorage.setItem('crm_ultimo_mes', agora.getMonth()+'-'+agora.getFullYear());
 })();
-// === FUNÇÃO SALVAR METAS ===
-function salvarMetas() {
+// === FUNÇÕES DE METAS - TODAS ===
+function salvarMetas() { salvarMetasGeral(); }
+function salvarMetasInd() { salvarMetasGeral(); }
+function salvarMetasCom() { salvarMetasGeral(); }
+function salvarMetasFin() { salvarMetasGeral(); }
+function salvarMetasTec() { salvarMetasGeral(); }
+function salvarMetasRH() { salvarMetasGeral(); }
+function salvarMetasBase() { salvarMetasGeral(); }
+function salvarMetasMkt() { salvarMetasGeral(); }
+function salvarMetasSDR() { salvarMetasGeral(); }
+function salvarMetasCloser() { salvarMetasGeral(); }
+
+function calcularMetasCom() { calcularMetasGeral(); }
+function calcularMetasFin() { calcularMetasGeral(); }
+function calcularMetasTec() { calcularMetasGeral(); }
+function calcularMetasRH() { calcularMetasGeral(); }
+function calcularMetasBase() { calcularMetasGeral(); }
+function calcularMetasMkt() { calcularMetasGeral(); }
+function calcularMetasSDR() { calcularMetasGeral(); }
+function calcularMetasCloser() { calcularMetasGeral(); }
+function calcularMetasInd() { calcularMetasGeral(); }
+
+function salvarMetasGeral() {
     var inputs = document.querySelectorAll('input, select');
     var dados = {};
     inputs.forEach(function(el) {
@@ -8811,22 +8832,22 @@ function salvarMetas() {
             dados[el.id] = el.value;
         }
     });
-    
     var mesSelect = document.querySelector('select');
     var mesSelecionado = mesSelect ? mesSelect.value : 'geral';
-    
     localStorage.setItem('metas_' + mesSelecionado, JSON.stringify(dados));
     localStorage.setItem('metas_atual', JSON.stringify(dados));
-    
     alert('✅ Metas salvas com sucesso!');
-    
-    // Atualiza dashboard se existir
-    if (typeof atualizarDashboard === 'function') {
-        atualizarDashboard();
-    }
 }
 
-// === FUNÇÃO VER HISTÓRICO ===
+function calcularMetasGeral() {
+    var inputs = document.querySelectorAll('input[type="number"]');
+    inputs.forEach(function(el) {
+        if (el.value) {
+            el.style.border = '2px solid #e67e22';
+        }
+    });
+}
+
 function verHistorico() {
     var keys = [];
     for (var i = 0; i < localStorage.length; i++) {
@@ -8842,12 +8863,10 @@ function verHistorico() {
     }
 }
 
-// === CARREGAR METAS SALVAS ===
 function carregarMetas() {
     var mesSelect = document.querySelector('select');
     var mesSelecionado = mesSelect ? mesSelect.value : 'geral';
     var dados = localStorage.getItem('metas_' + mesSelecionado);
-    
     if (!dados) dados = localStorage.getItem('metas_atual');
     if (dados) {
         dados = JSON.parse(dados);
@@ -8858,12 +8877,7 @@ function carregarMetas() {
     }
 }
 
-// Carrega ao abrir
 document.addEventListener('DOMContentLoaded', carregarMetas);
-
-// Carrega ao trocar mês
-document.querySelectorAll('select').forEach(function(sel) {
-    sel.addEventListener('change', carregarMetas);
 });</script>
 </body>
 </html>
