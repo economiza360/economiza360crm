@@ -5315,10 +5315,10 @@ function carregarMetas() {
                                 <div style="background:#252540;border-radius:10px;padding:20px;">
                                     <label style="color:#999;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Contratos Fechados</label>
                                     <p style="color:#666;font-size:11px;margin:4px 0 12px;">Novos contratos no mês</p>
-                                    <input type="number" id="tecContratosFechados" oninput="calcularTec()" placeholder="0" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:22px;font-weight:700;width:100%;text-align:center;">
+                                    <input type="number" id="tecContratosFechados" oninput="calcularMetasTec()" placeholder="0" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:22px;font-weight:700;width:100%;text-align:center;">
                                     <div style="margin-top:12px;padding-top:12px;border-top:1px solid #333;">
                                         <label style="color:#999;font-size:10px;text-transform:uppercase;">🎯 Meta de Contratos:</label>
-                                        <input type="number" id="tecMetaContratos" oninput="calcularTec()" placeholder="0" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:8px;border-radius:6px;font-size:14px;font-weight:600;width:100%;text-align:center;margin-top:6px;">
+                                        <input type="number" id="tecMetaContratos" oninput="calcularMetasTec()" placeholder="0" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:8px;border-radius:6px;font-size:14px;font-weight:600;width:100%;text-align:center;margin-top:6px;">
                                     </div>
                                     <div id="tecContratoBadge" style="margin-top:8px;">
                                         <span style="background:rgba(153,153,153,0.15);color:#999;padding:3px 10px;border-radius:4px;font-size:11px;">Aguardando dados...</span>
@@ -5334,7 +5334,7 @@ function carregarMetas() {
                                     <p style="color:#666;font-size:11px;margin:4px 0 12px;">Setup / Projeto / Deploy</p>
                                     <div style="display:flex;align-items:center;gap:6px;">
                                         <span style="color:#8b5cf6;font-size:16px;font-weight:600;">R$</span>
-                                        <input type="text" id="tecReceitaImplantacao" oninput="calcularTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:18px;font-weight:700;width:100%;text-align:right;">
+                                        <input type="text" id="tecReceitaImplantacao" oninput="calcularMetasTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:18px;font-weight:700;width:100%;text-align:right;">
                                     </div>
                                 </div>
 
@@ -5344,7 +5344,7 @@ function carregarMetas() {
                                     <p style="color:#666;font-size:11px;margin:4px 0 12px;">Manutenção / Suporte / SaaS</p>
                                     <div style="display:flex;align-items:center;gap:6px;">
                                         <span style="color:#8b5cf6;font-size:16px;font-weight:600;">R$</span>
-                                        <input type="text" id="tecReceitaRecorrencia" oninput="calcularTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:18px;font-weight:700;width:100%;text-align:right;">
+                                        <input type="text" id="tecReceitaRecorrencia" oninput="calcularMetasTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:18px;font-weight:700;width:100%;text-align:right;">
                                     </div>
                                 </div>
 
@@ -5357,7 +5357,7 @@ function carregarMetas() {
                                         <label style="color:#999;font-size:10px;text-transform:uppercase;">🎯 Meta de Receita:</label>
                                         <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
                                             <span style="color:#8b5cf6;font-size:13px;">R$</span>
-                                            <input type="text" id="tecMetaReceita" oninput="calcularTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:8px;border-radius:6px;font-size:14px;font-weight:600;width:100%;text-align:right;">
+                                            <input type="text" id="tecMetaReceita" oninput="calcularMetasTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:8px;border-radius:6px;font-size:14px;font-weight:600;width:100%;text-align:right;">
                                         </div>
                                     </div>
                                     <div id="tecReceitaBadge" style="margin-top:8px;">
@@ -5385,13 +5385,13 @@ function carregarMetas() {
                                     <p style="color:#666;font-size:11px;margin:4px 0 12px;">Entrou no caixa este mês</p>
                                     <div style="display:flex;align-items:center;gap:6px;">
                                         <span style="color:#f59e0b;font-size:16px;font-weight:600;">R$</span>
-                                        <input type="text" id="tecFaturamentoRealizado" oninput="calcularTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:18px;font-weight:700;width:100%;text-align:right;">
+                                        <input type="text" id="tecFaturamentoRealizado" oninput="calcularMetasTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:18px;font-weight:700;width:100%;text-align:right;">
                                     </div>
                                     <div style="margin-top:12px;padding-top:12px;border-top:1px solid #333;">
                                         <label style="color:#999;font-size:10px;text-transform:uppercase;">🎯 Meta de Faturamento:</label>
                                         <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
                                             <span style="color:#f59e0b;font-size:13px;">R$</span>
-                                            <input type="text" id="tecMetaFaturamento" oninput="calcularTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:8px;border-radius:6px;font-size:14px;font-weight:600;width:100%;text-align:right;">
+                                            <input type="text" id="tecMetaFaturamento" oninput="calcularMetasTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:8px;border-radius:6px;font-size:14px;font-weight:600;width:100%;text-align:right;">
                                         </div>
                                     </div>
                                     <div id="tecFaturamentoBadge" style="margin-top:8px;">
@@ -5415,13 +5415,13 @@ function carregarMetas() {
                                     <p style="color:#666;font-size:11px;margin:4px 0 12px;">Receita mensal recorrente ativa</p>
                                     <div style="display:flex;align-items:center;gap:6px;">
                                         <span style="color:#10b981;font-size:16px;font-weight:600;">R$</span>
-                                        <input type="text" id="tecMRR" oninput="calcularTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:22px;font-weight:700;width:100%;text-align:right;">
+                                        <input type="text" id="tecMRR" oninput="calcularMetasTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:22px;font-weight:700;width:100%;text-align:right;">
                                     </div>
                                     <div style="margin-top:12px;padding-top:12px;border-top:1px solid #333;">
                                         <label style="color:#999;font-size:10px;text-transform:uppercase;">🎯 Meta de MRR:</label>
                                         <div style="display:flex;align-items:center;gap:6px;margin-top:6px;">
                                             <span style="color:#10b981;font-size:13px;">R$</span>
-                                            <input type="text" id="tecMetaMRR" oninput="calcularTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:8px;border-radius:6px;font-size:14px;font-weight:600;width:100%;text-align:right;">
+                                            <input type="text" id="tecMetaMRR" oninput="calcularMetasTec()" placeholder="0,00" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:8px;border-radius:6px;font-size:14px;font-weight:600;width:100%;text-align:right;">
                                         </div>
                                     </div>
                                     <div id="tecMRRBadge" style="margin-top:8px;">
@@ -5449,7 +5449,7 @@ function carregarMetas() {
                         <div style="background:#252540;border-radius:10px;padding:20px;">
                             <label style="color:#999;font-size:11px;text-transform:uppercase;letter-spacing:1px;">Contratos Ativos</label>
                             <p style="color:#666;font-size:11px;margin:4px 0 12px;">Total de contratos vigentes</p>
-                            <input type="number" id="tecContratosAtivos" oninput="calcularTec()" placeholder="0" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:26px;font-weight:700;width:100%;text-align:center;">
+                            <input type="number" id="tecContratosAtivos" oninput="calcularMetasTec()" placeholder="0" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:12px;border-radius:8px;font-size:26px;font-weight:700;width:100%;text-align:center;">
                         </div>
 
                         <!-- Receita Futura de Recorrência (Calculado) -->
@@ -6183,14 +6183,14 @@ function carregarMetas() {
                         <p style="color:#666;font-size:13px;margin:4px 0 0;">CRM Intelligence / Metas / Indicação</p>
                     </div>
                     <div style="display:flex;gap:10px;align-items:center;">
-                        <select id="indMesSeletor" onchange="carregarMesInd()" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:10px 16px;border-radius:8px;font-size:14px;">
+                        <select id="indMesSeletor" onchange="carregarMetasInd()" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:10px 16px;border-radius:8px;font-size:14px;">
                             <option value="2025-01">Janeiro 2025</option><option value="2025-02">Fevereiro 2025</option><option value="2025-03">Março 2025</option><option value="2025-04">Abril 2025</option><option value="2025-05">Maio 2025</option><option value="2025-06">Junho 2025</option><option value="2025-07">Julho 2025</option><option value="2025-08">Agosto 2025</option><option value="2025-09">Setembro 2025</option><option value="2025-10">Outubro 2025</option><option value="2025-11">Novembro 2025</option><option value="2025-12">Dezembro 2025</option>
                             <option value="2026-01">Janeiro 2026</option><option value="2026-02">Fevereiro 2026</option><option value="2026-03">Março 2026</option><option value="2026-04">Abril 2026</option><option value="2026-05" selected>Maio 2026</option><option value="2026-06">Junho 2026</option><option value="2026-07">Julho 2026</option><option value="2026-08">Agosto 2026</option><option value="2026-09">Setembro 2026</option><option value="2026-10">Outubro 2026</option><option value="2026-11">Novembro 2026</option><option value="2026-12">Dezembro 2026</option>
                             <option value="2027-01">Janeiro 2027</option><option value="2027-02">Fevereiro 2027</option><option value="2027-03">Março 2027</option><option value="2027-04">Abril 2027</option><option value="2027-05">Maio 2027</option><option value="2027-06">Junho 2027</option><option value="2027-07">Julho 2027</option><option value="2027-08">Agosto 2027</option><option value="2027-09">Setembro 2027</option><option value="2027-10">Outubro 2027</option><option value="2027-11">Novembro 2027</option><option value="2027-12">Dezembro 2027</option>
                             <option value="2028-01">Janeiro 2028</option><option value="2028-02">Fevereiro 2028</option><option value="2028-03">Março 2028</option><option value="2028-04">Abril 2028</option><option value="2028-05">Maio 2028</option><option value="2028-06">Junho 2028</option><option value="2028-07">Julho 2028</option><option value="2028-08">Agosto 2028</option><option value="2028-09">Setembro 2028</option><option value="2028-10">Outubro 2028</option><option value="2028-11">Novembro 2028</option><option value="2028-12">Dezembro 2028</option>
                         </select>
                         <button onclick="salvarMetasInd()" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;">💾 Salvar</button>
-                        <button onclick="limparMesInd()" style="background:#dc2626;color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600;">🗑️</button>
+                        <button onclick="limparMetasInd()" style="background:#dc2626;color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600;">🗑️</button>
                     </div>
                 </div>
 
@@ -6407,14 +6407,14 @@ function carregarMetas() {
                         <p style="color:#666;font-size:13px;margin:4px 0 0;">CRM Intelligence / Metas / Indicação</p>
                     </div>
                     <div style="display:flex;gap:10px;align-items:center;">
-                        <select id="indMesSeletor" onchange="carregarMesInd()" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:10px 16px;border-radius:8px;font-size:14px;">
+                        <select id="indMesSeletor" onchange="carregarMetasInd()" style="background:#1a1a2e;color:#fff;border:1px solid #444;padding:10px 16px;border-radius:8px;font-size:14px;">
                             <option value="2025-01">Janeiro 2025</option><option value="2025-02">Fevereiro 2025</option><option value="2025-03">Março 2025</option><option value="2025-04">Abril 2025</option><option value="2025-05">Maio 2025</option><option value="2025-06">Junho 2025</option><option value="2025-07">Julho 2025</option><option value="2025-08">Agosto 2025</option><option value="2025-09">Setembro 2025</option><option value="2025-10">Outubro 2025</option><option value="2025-11">Novembro 2025</option><option value="2025-12">Dezembro 2025</option>
                             <option value="2026-01">Janeiro 2026</option><option value="2026-02">Fevereiro 2026</option><option value="2026-03">Março 2026</option><option value="2026-04">Abril 2026</option><option value="2026-05" selected>Maio 2026</option><option value="2026-06">Junho 2026</option><option value="2026-07">Julho 2026</option><option value="2026-08">Agosto 2026</option><option value="2026-09">Setembro 2026</option><option value="2026-10">Outubro 2026</option><option value="2026-11">Novembro 2026</option><option value="2026-12">Dezembro 2026</option>
                             <option value="2027-01">Janeiro 2027</option><option value="2027-02">Fevereiro 2027</option><option value="2027-03">Março 2027</option><option value="2027-04">Abril 2027</option><option value="2027-05">Maio 2027</option><option value="2027-06">Junho 2027</option><option value="2027-07">Julho 2027</option><option value="2027-08">Agosto 2027</option><option value="2027-09">Setembro 2027</option><option value="2027-10">Outubro 2027</option><option value="2027-11">Novembro 2027</option><option value="2027-12">Dezembro 2027</option>
                             <option value="2028-01">Janeiro 2028</option><option value="2028-02">Fevereiro 2028</option><option value="2028-03">Março 2028</option><option value="2028-04">Abril 2028</option><option value="2028-05">Maio 2028</option><option value="2028-06">Junho 2028</option><option value="2028-07">Julho 2028</option><option value="2028-08">Agosto 2028</option><option value="2028-09">Setembro 2028</option><option value="2028-10">Outubro 2028</option><option value="2028-11">Novembro 2028</option><option value="2028-12">Dezembro 2028</option>
                         </select>
                         <button onclick="salvarMetasInd()" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;">💾 Salvar</button>
-                        <button onclick="limparMesInd()" style="background:#dc2626;color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600;">🗑️</button>
+                        <button onclick="limparMetasInd()" style="background:#dc2626;color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer;font-weight:600;">🗑️</button>
                     </div>
                 </div>
 
