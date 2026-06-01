@@ -4988,7 +4988,56 @@
     <!-- Status do Mês -->
     <div id="metaStatusBar" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:12px;padding:16px 20px;margin-bottom:24px;border:1px solid #333;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
         <div>
-            <span style="color:#999;font-size:12px;">📅 Mês Atual:</span> <strong id="metaMesAtual" style="color:#e67e22;font-size:14px;margin-left:6px;">Junho 2026</strong><script>document.getElementById('metaMesAtual').textContent=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'][new Date().getMonth()]+' '+new Date().getFullYear();</script>
+            <span style="color:#999;font-size:12px;">📅 Mês Atual:</span> <strong id="metaMesAtual" style="color:#e67e22;font-size:14px;margin-left:6px;">Junho 2026</strong><script>function salvarMetas() { salvarMetasGeral(); }
+function salvarMetasInd() { salvarMetasGeral(); }
+function salvarMetasCom() { salvarMetasGeral(); }
+function salvarMetasFin() { salvarMetasGeral(); }
+function salvarMetasTec() { salvarMetasGeral(); }
+function salvarMetasRH() { salvarMetasGeral(); }
+function salvarMetasBase() { salvarMetasGeral(); }
+function salvarMetasMkt() { salvarMetasGeral(); }
+function salvarMetasSDR() { salvarMetasGeral(); }
+function salvarMetasCloser() { salvarMetasGeral(); }
+function calcularMetasCom() {}
+function calcularMetasFin() {}
+function calcularMetasTec() {}
+function calcularMetasRH() {}
+function calcularMetasBase() {}
+function calcularMetasMkt() {}
+function calcularMetasSDR() {}
+function calcularMetasCloser() {}
+function calcularMetasInd() {}
+function salvarMetasGeral() {
+    var inputs = document.querySelectorAll('input, select');
+    var dados = {};
+    inputs.forEach(function(el) { if (el.id) { dados[el.id] = el.value; } });
+    var mesSelect = document.querySelector('select');
+    var mes = mesSelect ? mesSelect.value : 'geral';
+    localStorage.setItem('metas_' + mes, JSON.stringify(dados));
+    localStorage.setItem('metas_atual', JSON.stringify(dados));
+    alert('✅ Metas salvas com sucesso!');
+}
+function verHistorico() {
+    var keys = [];
+    for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k.startsWith('metas_') && k !== 'metas_atual') keys.push(k.replace('metas_', ''));
+    }
+    alert(keys.length === 0 ? 'Nenhum histórico.' : '📊 Meses salvos:\n' + keys.join('\n'));
+}
+function carregarMetas() {
+    var mesSelect = document.querySelector('select');
+    var mes = mesSelect ? mesSelect.value : 'geral';
+    var dados = localStorage.getItem('metas_' + mes);
+    if (!dados) dados = localStorage.getItem('metas_atual');
+    if (dados) {
+        dados = JSON.parse(dados);
+        Object.keys(dados).forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) el.value = dados[id];
+        });
+    }
+}document.getElementById('metaMesAtual').textContent=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'][new Date().getMonth()]+' '+new Date().getFullYear();</script>
         </div>
         <div>
             <span style="color:#999;font-size:12px;">Status:</span>
