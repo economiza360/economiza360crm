@@ -8750,14 +8750,10 @@ function cobrarCliente(empresa) {
 }
     </script>
 <script>
-// === SISTEMA AUTOMÁTICO DE MÊS E RESET ===
 (function(){
     var meses=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
     var agora=new Date();
-    var mesAtual=agora.getMonth();
-    var anoAtual=agora.getFullYear();
-    var chave=mesAtual+'-'+anoAtual;
-    var mesNome=meses[mesAtual]+' '+anoAtual;
+    var mesNome=meses[agora.getMonth()]+' '+agora.getFullYear();
     
     // Atualiza mês
     document.querySelectorAll('*').forEach(function(el){
@@ -8765,40 +8761,46 @@ function cobrarCliente(empresa) {
             meses.forEach(function(m){
                 for(var a=2024;a<=2050;a++){
                     if(el.textContent.includes(m+' '+a)){
-                        el.textContent=el.textContent.replace(m+' '+a, mesNome);
+                        el.textContent=el.textContent.replace(new RegExp(m+' '+a,'g'), mesNome);
                     }
                 }
             });
         }
     });
 
-    // ZERA TODOS OS VALORES AGORA
-    var zeros={
-        '300':'0','248':'0','152':'0','21':'0',
-        '126':'0','102':'0','72':'0','9':'0','7':'0','5':'0',
-        'R$ 599K':'R$ 0','R$ 65.980':'R$ 0','R$ 533K':'R$ 0',
-        'R$ 1.24M':'R$ 0','R$ 50.4K':'R$ 0','R$ 28.5K':'R$ 0',
-        'R$ 13.3K':'R$ 0','R$ 1.292':'R$ 0','R$ 268K':'R$ 0',
-        'R$ 196K':'R$ 0','R$ 135K':'R$ 0','R$ 29.8K':'R$ 0',
-        'R$ 28K':'R$ 0','R$ 27K':'R$ 0','R$ 720K':'R$ 0',
-        'R$ 1.86M':'R$ 0',
-        '+12%':'0%','+8%':'0%','+5%':'0%','+18%':'0%',
-        '+22%':'0%','+15%':'0%','+10%':'0%','-3%':'0%'
-    };
+    // ZERA TUDO - valores numéricos e financeiros
     document.querySelectorAll('*').forEach(function(el){
         if(el.children.length===0){
             var t=el.textContent.trim();
-            if(zeros[t]!==undefined) el.textContent=zeros[t];
+            // Zera valores com R$
+            if(t.match(/^R\$\s/)){
+                el.textContent='R$ 0';
+            }
+            // Zera percentuais tipo +12% -3%
+            if(t.match(/^[+-]\d+%$/)){
+                el.textContent='0%';
+            }
+            // Zera números puros (300, 248, 152, etc)
+            if(t.match(/^\d+$/) && parseInt(t)>1){
+                el.textContent='0';
+            }
         }
     });
 
     // Zera barras de progresso
-    document.querySelectorAll('.progress-bar,[class*="progress"]').forEach(function(el){
-        if(el.style) el.style.width='0%';
+    document.querySelectorAll('[style*="width"]').forEach(function(el){
+        var w=el.style.width;
+        if(w && w.includes('%') && el.className && el.className.includes('progress')){
+            el.style.width='0%';
+        }
     });
 
-    // Reset automático por mês
-    localStorage.setItem('crm_ultimo_mes', chave);
+    // Esconde linhas de tabela com dados
+    document.querySelectorAll('tbody tr').forEach(function(tr){
+        tr.style.display='none';
+    });
+
+    localStorage.setItem('crm_ultimo_mes', agora.getMonth()+'-'+agora.getFullYear());
 })();
 </script>
 </body>
