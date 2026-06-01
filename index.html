@@ -8759,6 +8759,7 @@ function cobrarCliente(empresa) {
     var chave=mesAtual+'-'+anoAtual;
     var mesNome=meses[mesAtual]+' '+anoAtual;
     
+    // Atualiza mês
     document.querySelectorAll('*').forEach(function(el){
         if(el.children.length===0){
             meses.forEach(function(m){
@@ -8770,28 +8771,35 @@ function cobrarCliente(empresa) {
             });
         }
     });
-    
-    var ultimoMes=localStorage.getItem('crm_ultimo_mes');
-    if(ultimoMes && ultimoMes!==chave){
-        document.querySelectorAll('h2, h3, .card-value, .stat-value, .metric-value').forEach(function(el){
+
+    // ZERA TODOS OS VALORES AGORA
+    var zeros={
+        '300':'0','248':'0','152':'0','21':'0',
+        '126':'0','102':'0','72':'0','9':'0','7':'0','5':'0',
+        'R$ 599K':'R$ 0','R$ 65.980':'R$ 0','R$ 533K':'R$ 0',
+        'R$ 1.24M':'R$ 0','R$ 50.4K':'R$ 0','R$ 28.5K':'R$ 0',
+        'R$ 13.3K':'R$ 0','R$ 1.292':'R$ 0','R$ 268K':'R$ 0',
+        'R$ 196K':'R$ 0','R$ 135K':'R$ 0','R$ 29.8K':'R$ 0',
+        'R$ 28K':'R$ 0','R$ 27K':'R$ 0','R$ 720K':'R$ 0',
+        'R$ 1.86M':'R$ 0',
+        '+12%':'0%','+8%':'0%','+5%':'0%','+18%':'0%',
+        '+22%':'0%','+15%':'0%','+10%':'0%','-3%':'0%'
+    };
+    document.querySelectorAll('*').forEach(function(el){
+        if(el.children.length===0){
             var t=el.textContent.trim();
-            if(/^\d+$/.test(t) && parseInt(t)>0) el.textContent='0';
-            if(/^R\$/.test(t)) el.textContent='R$ 0';
-        });
-        document.querySelectorAll('span, small, .badge').forEach(function(el){
-            var t=el.textContent.trim();
-            if(/^[+-]\d+%$/.test(t)) el.textContent='0%';
-        });
-        document.querySelectorAll('.progress-bar').forEach(function(el){
-            if(el.style) el.style.width='0%';
-        });
-        document.querySelectorAll('tbody tr').forEach(function(tr){
-            tr.style.display='none';
-        });
-    }
+            if(zeros[t]!==undefined) el.textContent=zeros[t];
+        }
+    });
+
+    // Zera barras de progresso
+    document.querySelectorAll('.progress-bar,[class*="progress"]').forEach(function(el){
+        if(el.style) el.style.width='0%';
+    });
+
+    // Reset automático por mês
     localStorage.setItem('crm_ultimo_mes', chave);
 })();
 </script>
 </body>
-</html>
 </html>
